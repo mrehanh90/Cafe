@@ -252,6 +252,76 @@ const cafes = [
     features: ["rooftop", "events", "24 hours"],
     rating: "⭐ 4.8",
     description: "24-hour rooftop café-restaurant popular for events, celebrations and skyline views of Islamabad."
+  },
+  {
+    id: 26,
+    name: "Roasters Coffee House & Grill",
+    address: "1 Agha Khan Rd, F-6 Markaz, Islamabad, Pakistan",
+    lat: 33.7305564,
+    lng: 73.079177,
+    features: ["grill", "steaks", "dinner"],
+    rating: "⭐ 4.2",
+    description: "Long-standing F-6 grill house known for tomahawk steaks, loaded fries and a lively evening crowd."
+  },
+  {
+    id: 27,
+    name: "Xander's Islamabad",
+    address: "Tazeem Tower, Plot 3, New Blue Area, F-9/G-9, Islamabad, 44000, Pakistan",
+    lat: 33.6924243,
+    lng: 73.0247433,
+    features: ["family-friendly", "modern", "all-day dining"],
+    rating: "⭐ 4.0",
+    description: "Buzzy, modern all-day café-restaurant popular for breakfast, pasta and steaks; a favorite for both families and late-night hangouts."
+  },
+  {
+    id: 28,
+    name: "Coffee Planet",
+    address: "1st Floor, Giga Mall, DHA Phase II, Islamabad, Pakistan",
+    lat: 33.5211113,
+    lng: 73.1585192,
+    features: ["wifi", "mall", "modern"],
+    rating: "⭐ 3.5",
+    description: "Bright mall café inside Giga Mall with plenty of seating and good wifi; a convenient coffee stop while shopping in DHA."
+  },
+  {
+    id: 29,
+    name: "Cafe Ice Berg",
+    address: "Plaza 10, 1st Floor, Civic Centre, Bahria Town, Islamabad, 46000, Pakistan",
+    lat: 33.5505646,
+    lng: 73.1232015,
+    features: ["24 hours", "shisha", "dessert"],
+    rating: "⭐ 4.4",
+    description: "Popular 24-hour Bahria Town spot known for its shisha lounge, casual fast food and reliably good desserts."
+  },
+  {
+    id: 30,
+    name: "Quetta Chai-O-Sip",
+    address: "Al Anayat Mall, G-11 Markaz, Islamabad, 44020, Pakistan",
+    lat: 33.6679972,
+    lng: 72.9971535,
+    features: ["tea house", "paratha", "casual"],
+    rating: "⭐ 4.4",
+    description: "Casual G-11 tea house famous for karak doodh pati and stuffed parathas, with an open kitchen you can watch."
+  },
+  {
+    id: 31,
+    name: "Tuscany Courtyard",
+    address: "No. 4, Kohsar Market, Street 10, F-6/3, Islamabad, Pakistan",
+    lat: 33.7355367,
+    lng: 73.0783478,
+    features: ["fine dining", "italian", "garden seating"],
+    rating: "⭐ 4.1",
+    description: "Vintage Italian-themed courtyard restaurant in Kohsar Market known for wood-fired pizza and a relaxed high-tea spread."
+  },
+  {
+    id: 32,
+    name: "The Hot Spot",
+    address: "Gol Market, Street 3, F-7/3, Islamabad, Pakistan",
+    lat: 33.7261521,
+    lng: 73.0572509,
+    features: ["dessert", "ice cream", "iconic"],
+    rating: "⭐ 4.3",
+    description: "Islamabad institution for nearly three decades — retro pop-art décor and beloved ice creams, gelatos and hot chocolate."
   }
 ];
 
