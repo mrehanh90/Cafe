@@ -384,7 +384,7 @@ window.initMap = function() {
         mapTypeControl: false,
         streetViewControl: false,
         fullscreenControl: true,
-        styles: darkMapStyle // Default Dark Theme Map
+        styles: null // Default Light Theme Map (standard Google style)
     });
 
     infoWindow = new google.maps.InfoWindow();
