@@ -11,7 +11,24 @@ const { filterCafes, sortByDistance, sortCafes } = require('./utils/filterCafes'
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(helmet());
+// helmet's default CSP only allows same-origin resources, which blocks the
+// Google Maps script, the marker clustering script from unpkg, and the map
+// tiles/images Maps loads at runtime. Explicitly allow what this app needs
+// rather than turning CSP off entirely.
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "https://maps.googleapis.com", "https://unpkg.com"],
+        styleSrc: ["'self'", "'unsafe-inline'"], // Maps injects inline styles for the map UI
+        imgSrc: ["'self'", "data:", "https://*.googleapis.com", "https://*.gstatic.com", "https://*.ggpht.com"],
+        connectSrc: ["'self'", "https://maps.googleapis.com", "https://*.googleapis.com"],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      },
+    },
+  })
+);
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
