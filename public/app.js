@@ -22,9 +22,30 @@ const themeToggleBtn = document.getElementById('themeToggleBtn');
 const nearMeBtn = document.getElementById('nearMeBtn');
 const aiSearchBtn = document.getElementById('aiSearchBtn');
 const statusMsg = document.getElementById('statusMsg');
+const sortSelect = document.getElementById('sortSelect');
 
 let currentFilter = 'all';
 let searchQuery = '';
+let currentSort = 'default';
+
+// --- favorites, stored client-side only (localStorage), never sent to the backend ---
+const FAVORITES_KEY = 'cafeFinderFavorites';
+
+function getFavorites() {
+    try {
+        return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function toggleFavorite(id) {
+    const favs = getFavorites();
+    const idx = favs.indexOf(id);
+    if (idx === -1) favs.push(id); else favs.splice(idx, 1);
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favs));
+    return favs;
+}
 
 const darkMapStyle = [
     { elementType: "geometry", stylers: [{ color: "#212121" }] },
@@ -39,7 +60,39 @@ const darkMapStyle = [
     { featureType: "water", elementType: "geometry", stylers: [{ color: "#000000" }] }
 ];
 
+function showSkeleton() {
+    cafeListEl.innerHTML = Array.from({ length: 5 })
+        .map(() => `
+            <div class="cafe-card skeleton">
+                <div class="skeleton-line skeleton-title"></div>
+                <div class="skeleton-line skeleton-sub"></div>
+                <div class="skeleton-line skeleton-text"></div>
+            </div>
+        `)
+        .join('');
+}
+
+// if the Google Maps script fails to load (bad key, network blocked, ad-blocker),
+// initMap never fires — this timeout catches that and shows a real message instead
+// of a permanently blank grey box
+const mapsLoadTimeout = setTimeout(() => {
+    if (!map) {
+        const mapError = document.getElementById('mapError');
+        if (mapError) mapError.hidden = false;
+    }
+}, 8000);
+
+// Google calls this automatically if the API key itself is rejected
+window.gm_authFailure = function () {
+    const mapError = document.getElementById('mapError');
+    if (mapError) {
+        mapError.hidden = false;
+        mapError.textContent = 'Google Maps rejected the API key. Check that it is valid and unrestricted for this domain.';
+    }
+};
+
 window.initMap = function () {
+    clearTimeout(mapsLoadTimeout);
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 33.7180, lng: 73.0550 },
         zoom: 13,
@@ -78,6 +131,7 @@ function hideStatus() {
 }
 
 async function loadCafes() {
+    showSkeleton();
     try {
         const res = await fetch('/api/cafes');
         allCafes = await res.json();
@@ -103,16 +157,31 @@ function displayCafes(cafeArray) {
         return;
     }
 
+    const favorites = getFavorites();
+
     cafeArray.forEach(cafe => {
         const card = document.createElement('div');
         card.className = 'cafe-card';
+        const isFav = favorites.includes(cafe.id);
         card.innerHTML = `
-            <h3>${cafe.name}</h3>
+            <div class="card-top-row">
+                <h3>${cafe.name}</h3>
+                <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${cafe.id}" title="Toggle favorite" aria-label="Toggle favorite">${isFav ? '★' : '☆'}</button>
+            </div>
             <p>${cafe.address} • <strong>${cafe.rating}</strong></p>
             <p>${cafe.description}</p>
             <div>${cafe.features.map(f => `<span class="badge">${f.toUpperCase()}</span>`).join('')}</div>
         `;
         cafeListEl.appendChild(card);
+
+        const favBtn = card.querySelector('.fav-btn');
+        favBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // don't trigger the card's own click (which pans the map)
+            const updated = toggleFavorite(cafe.id);
+            favBtn.classList.toggle('active', updated.includes(cafe.id));
+            favBtn.textContent = updated.includes(cafe.id) ? '★' : '☆';
+            if (currentFilter === 'favorites') runFilter(); // refresh the list if we're viewing favorites only
+        });
 
         if (!cafe.lat || !cafe.lng) return; // a few entries in the dataset don't have confirmed coords
 
@@ -151,16 +220,34 @@ function openInfoWindow(cafe, marker) {
     infoWindow.open(map, marker);
 }
 
-// normal search + filter, hits the backend so filtering logic only lives in one place
+// normal search + filter, hits the backend so filtering logic only lives in one place.
+// "favorites" is a client-only concept (stored in localStorage), so that one filters locally instead.
 async function runFilter() {
-    const params = new URLSearchParams({ query: searchQuery, feature: currentFilter });
+    if (currentFilter === 'favorites') {
+        const favorites = getFavorites();
+        const params = new URLSearchParams({ query: searchQuery, feature: 'all', sort: currentSort });
+        const res = await fetch(`/api/cafes?${params}`);
+        const result = await res.json();
+        displayCafes(result.filter(c => favorites.includes(c.id)));
+        return;
+    }
+
+    const params = new URLSearchParams({ query: searchQuery, feature: currentFilter, sort: currentSort });
     const res = await fetch(`/api/cafes?${params}`);
     const result = await res.json();
     displayCafes(result);
 }
 
+// debounce so we're not firing a network request on every single keystroke
+let searchDebounceTimer;
 searchInput.addEventListener('input', (e) => {
     searchQuery = e.target.value.trim();
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(runFilter, 300);
+});
+
+sortSelect.addEventListener('change', (e) => {
+    currentSort = e.target.value;
     runFilter();
 });
 

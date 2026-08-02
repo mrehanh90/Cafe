@@ -37,4 +37,22 @@ function sortByDistance(cafes, userLat, userLng) {
     );
 }
 
-module.exports = { filterCafes, distanceKm, sortByDistance };
+// pulls the numeric part out of strings like "⭐ 4.2" so we can sort on it
+function parseRating(ratingStr) {
+  const match = /([\d.]+)/.exec(ratingStr || '');
+  return match ? parseFloat(match[1]) : 0;
+}
+
+function sortCafes(cafes, sortBy = 'default') {
+  const list = [...cafes];
+  switch (sortBy) {
+    case 'rating':
+      return list.sort((a, b) => parseRating(b.rating) - parseRating(a.rating));
+    case 'name':
+      return list.sort((a, b) => a.name.localeCompare(b.name));
+    default:
+      return list; // keep original order
+  }
+}
+
+module.exports = { filterCafes, distanceKm, sortByDistance, sortCafes, parseRating };

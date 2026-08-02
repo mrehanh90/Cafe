@@ -1,4 +1,4 @@
-const { filterCafes, distanceKm, sortByDistance } = require('../utils/filterCafes');
+const { filterCafes, distanceKm, sortByDistance, sortCafes } = require('../utils/filterCafes');
 
 const sample = [
   { id: 1, name: 'Brew', address: 'E-7 Islamabad', description: 'coffee and bakery', features: ['wifi', 'bakery'], lat: 33.72, lng: 73.04 },
@@ -58,5 +58,34 @@ describe('sortByDistance', () => {
   test('closest cafe comes first', () => {
     const sorted = sortByDistance(sample, 33.72, 73.04);
     expect(sorted[0].name).toBe('Brew');
+  });
+});
+
+describe('sortCafes', () => {
+  const rated = [
+    { id: 1, name: 'Zebra Cafe', rating: '⭐ 3.5' },
+    { id: 2, name: 'Aroma Cafe', rating: '⭐ 4.8' },
+    { id: 3, name: 'Mid Cafe', rating: '⭐ 4.2' },
+  ];
+
+  test('default leaves original order untouched', () => {
+    const sorted = sortCafes(rated, 'default');
+    expect(sorted.map((c) => c.id)).toEqual([1, 2, 3]);
+  });
+
+  test('rating sorts highest first', () => {
+    const sorted = sortCafes(rated, 'rating');
+    expect(sorted.map((c) => c.id)).toEqual([2, 3, 1]);
+  });
+
+  test('name sorts alphabetically', () => {
+    const sorted = sortCafes(rated, 'name');
+    expect(sorted.map((c) => c.name)).toEqual(['Aroma Cafe', 'Mid Cafe', 'Zebra Cafe']);
+  });
+
+  test('does not mutate the original array', () => {
+    const original = [...rated];
+    sortCafes(rated, 'rating');
+    expect(rated).toEqual(original);
   });
 });

@@ -5,7 +5,11 @@
     "address": "Block 4F, Shaheen Market, E-7, Islamabad, 44000, Pakistan",
     "lat": 33.727251,
     "lng": 73.047777,
-    "features": ["wifi", "quiet", "bakery"],
+    "features": [
+      "wifi",
+      "quiet",
+      "bakery"
+    ],
     "rating": "⭐ 4.2",
     "description": "Specialty coffee & bakery known for sourdough breads, salads and sandwiches; popular workspace spot."
   },
@@ -15,7 +19,11 @@
     "address": "Jinnah Ave, Area G-7/2, Blue Area, Islamabad, 44000, Pakistan",
     "lat": 33.710643,
     "lng": 73.058582,
-    "features": ["bakery", "breakfast", "family-friendly"],
+    "features": [
+      "bakery",
+      "breakfast",
+      "family-friendly"
+    ],
     "rating": "⭐ 4.3",
     "description": "Popular mid-range bakery-café known for breakfast, croissants, bagels and all-day dining."
   },
@@ -23,9 +31,13 @@
     "id": 3,
     "name": "Gloria Jean's Coffees",
     "address": "Gol Market, Street 8, F-7/3, Islamabad, 44000, Pakistan",
-    "lat": 33.725980,
+    "lat": 33.72598,
     "lng": 73.057791,
-    "features": ["wifi", "modern", "coffee-chain"],
+    "features": [
+      "wifi",
+      "modern",
+      "coffee-chain"
+    ],
     "rating": "⭐ 4.2",
     "description": "International coffee chain branch with a modern, cozy setup; good for meetups or quiet work."
   },
@@ -35,7 +47,11 @@
     "address": "Street 10, Kohsar Market, F-6/3, Islamabad, 44000, Pakistan",
     "lat": 33.735468,
     "lng": 73.078165,
-    "features": ["outdoor seating", "fine dining", "brunch"],
+    "features": [
+      "outdoor seating",
+      "fine dining",
+      "brunch"
+    ],
     "rating": "⭐ 4.2",
     "description": "Well-known Kohsar Market restaurant-café with relaxed outdoor seating, good for brunch, lunch or dinner."
   },
@@ -43,9 +59,13 @@
     "id": 5,
     "name": "Mocca Coffee",
     "address": "Street 1, Kohsar Market, Shop No. 1, F-6/3, Islamabad, Pakistan",
-    "lat": 33.735440,
+    "lat": 33.73544,
     "lng": 73.078068,
-    "features": ["wifi", "quiet", "minimalist"],
+    "features": [
+      "wifi",
+      "quiet",
+      "minimalist"
+    ],
     "rating": "⭐ 4.2",
     "description": "Sleek, minimalist café favored for pour-over coffee, breakfast platters and laptop-friendly seating."
   },
@@ -55,7 +75,11 @@
     "address": "Shop #3, Kohsar Market, Street 3, F-6/3, Islamabad, Pakistan",
     "lat": 33.735496,
     "lng": 73.078231,
-    "features": ["cozy", "family-friendly", "desi & continental"],
+    "features": [
+      "cozy",
+      "family-friendly",
+      "desi & continental"
+    ],
     "rating": "⭐ 3.5",
     "description": "Cozy, bookshop-like restaurant in Kohsar Market serving thalis, English breakfast and casual fare."
   },
@@ -65,7 +89,10 @@
     "address": "House No. 1, Street No. 1, F-6/3, Islamabad, 44000, Pakistan",
     "lat": 33.741257,
     "lng": 73.081685,
-    "features": ["outdoor seating", "breakfast"],
+    "features": [
+      "outdoor seating",
+      "breakfast"
+    ],
     "rating": "⭐ 3.5",
     "description": "Small deli-café known for breakfast items like French toast, with a pleasant outdoor sitting area."
   },
@@ -73,9 +100,13 @@
     "id": 8,
     "name": "Chaaye Khana",
     "address": "Shop #11, Block B, United Bakery Plaza, F-6 Super Market, Islamabad, 44000, Pakistan",
-    "lat": 33.729330,
+    "lat": 33.72933,
     "lng": 73.074949,
-    "features": ["family-friendly", "tea house", "live music"],
+    "features": [
+      "family-friendly",
+      "tea house",
+      "live music"
+    ],
     "rating": "⭐ 4.3",
     "description": "Popular tea house serving karak chai, halwa puri and breakfast staples in a warm, aesthetic setting."
   },
@@ -85,7 +116,11 @@
     "address": "Shop #66, Beverly Centre, 1 Nazim-ud-din Rd, F-6/1, Islamabad, 44000, Pakistan",
     "lat": 33.720363,
     "lng": 73.074039,
-    "features": ["dessert", "quiet", "indoor & outdoor"],
+    "features": [
+      "dessert",
+      "quiet",
+      "indoor & outdoor"
+    ],
     "rating": "⭐ 4.5",
     "description": "Islamabad's go-to dessert spot — cheesecakes, brownies and strong Italian-style coffee."
   },
@@ -95,7 +130,11 @@
     "address": "College Rd, near Saeed Book Bank, Jinnah Super Market, F-7 Markaz, Islamabad, Pakistan",
     "lat": 33.722077,
     "lng": 73.058138,
-    "features": ["rooftop", "grill", "casual dining"],
+    "features": [
+      "rooftop",
+      "grill",
+      "casual dining"
+    ],
     "rating": "⭐ 4.1",
     "description": "Long-running F-7 restaurant known for grilled mains, pasta and a rooftop seating option."
   },
@@ -105,7 +144,11 @@
     "address": "Gol Market, Street 4, F-7/3, Islamabad, Pakistan",
     "lat": 33.726322,
     "lng": 73.057645,
-    "features": ["fine dining", "elegant", "gallery seating"],
+    "features": [
+      "fine dining",
+      "elegant",
+      "gallery seating"
+    ],
     "rating": "⭐ 4.3",
     "description": "Upscale French-inspired bistro with elegant décor, gallery/greenery seating and a refined menu."
   },
@@ -115,7 +158,11 @@
     "address": "Shop #G-6, Liberty Mall, F-11 Markaz, Islamabad, 44000, Pakistan",
     "lat": 33.683969,
     "lng": 72.986293,
-    "features": ["wifi", "modern", "specialty coffee"],
+    "features": [
+      "wifi",
+      "modern",
+      "specialty coffee"
+    ],
     "rating": "⭐ 4.6",
     "description": "Bright, airy specialty coffee shop popular for its matcha and Spanish lattes plus knowledgeable baristas."
   },
@@ -123,9 +170,13 @@
     "id": 15,
     "name": "Loafology Bakery & Café (F-11)",
     "address": "Aura Square Mall, Major Rd, F-11 Markaz, Islamabad, 44000, Pakistan",
-    "lat": 33.683180,
-    "lng": 72.990790,
-    "features": ["bakery", "breakfast", "cozy"],
+    "lat": 33.68318,
+    "lng": 72.99079,
+    "features": [
+      "bakery",
+      "breakfast",
+      "cozy"
+    ],
     "rating": "⭐ 4.2",
     "description": "F-11 branch of the popular bakery-café chain; known for sourdough, omelettes and pastries."
   },
@@ -135,7 +186,11 @@
     "address": "Plot No. 6, Super Market, Block B, Agha Khan Rd, F-6 Markaz, Islamabad, 44000, Pakistan",
     "lat": 33.729846,
     "lng": 73.077637,
-    "features": ["wifi", "cozy", "coffee-chain"],
+    "features": [
+      "wifi",
+      "cozy",
+      "coffee-chain"
+    ],
     "rating": "⭐ 4.4",
     "description": "Cozy coffee chain branch popular for lattes, sandwiches and light work sessions."
   },
@@ -145,7 +200,11 @@
     "address": "Markaz, I-8 Markaz, Islamabad, 44000, Pakistan",
     "lat": 33.667994,
     "lng": 73.075806,
-    "features": ["wifi", "quiet", "coffee-chain"],
+    "features": [
+      "wifi",
+      "quiet",
+      "coffee-chain"
+    ],
     "rating": "⭐ 4.2",
     "description": "Calm, meeting-friendly branch of the international coffee chain; known for its peaceful ambience."
   },
@@ -155,7 +214,11 @@
     "address": "Block 7, Roomy Signature Hotel, Super Market, Agha Khan Rd, F-6 Markaz, Islamabad, 44000, Pakistan",
     "lat": 33.728745,
     "lng": 73.075378,
-    "features": ["wifi", "premium", "dessert"],
+    "features": [
+      "wifi",
+      "premium",
+      "dessert"
+    ],
     "rating": "⭐ 4.5",
     "description": "Elegant coffee shop known for its flat whites, tiramisu and refined ambience."
   },
@@ -165,7 +228,11 @@
     "address": "Shop 53, Ground Floor, Beverly Centre, F-6/1, Islamabad, 44000, Pakistan",
     "lat": 33.720279,
     "lng": 73.073535,
-    "features": ["wifi", "specialty coffee", "breakfast"],
+    "features": [
+      "wifi",
+      "specialty coffee",
+      "breakfast"
+    ],
     "rating": "⭐ 4.4",
     "description": "Widely rated as one of Islamabad's best specialty coffee spots; known for aeropress, pistachio latte and breakfast bagels."
   },
@@ -175,7 +242,11 @@
     "address": "Rana Market, Street 16, F-7/2, Islamabad, 44000, Pakistan",
     "lat": 33.721345,
     "lng": 73.050913,
-    "features": ["outdoor seating", "shisha", "steaks"],
+    "features": [
+      "outdoor seating",
+      "shisha",
+      "steaks"
+    ],
     "rating": "⭐ 4.7",
     "description": "Corner café known for hearty steaks, a cozy outdoor-only setup and a small tree-house feature."
   },
@@ -185,7 +256,11 @@
     "address": "Shop #4, Block 4, Najam Market, F-8/4, Islamabad, 44000, Pakistan",
     "lat": 33.709295,
     "lng": 73.046236,
-    "features": ["wifi", "cozy", "specialty coffee"],
+    "features": [
+      "wifi",
+      "cozy",
+      "specialty coffee"
+    ],
     "rating": "⭐ 4.8",
     "description": "Newer, highly-rated coffee spot with a European café feel — known for pistachio lattes and fresh sandwiches."
   },
@@ -195,7 +270,11 @@
     "address": "349 Street 1, I-9/3, Islamabad, 44000, Pakistan",
     "lat": 33.660937,
     "lng": 73.058997,
-    "features": ["family-friendly", "casual-chic", "coffee"],
+    "features": [
+      "family-friendly",
+      "casual-chic",
+      "coffee"
+    ],
     "rating": "⭐ 4.7",
     "description": "Warm, family-friendly specialty coffee spot serving coffee drinks, burgers, wraps and desserts."
   },
@@ -205,7 +284,11 @@
     "address": "8 Main Double Road, 2nd Floor, Emaan Arcade, PMCHS, E-11/2, Islamabad, 44000, Pakistan",
     "lat": 33.696148,
     "lng": 72.967982,
-    "features": ["gaming", "shisha", "late night"],
+    "features": [
+      "gaming",
+      "shisha",
+      "late night"
+    ],
     "rating": "⭐ 4.7",
     "description": "Underground-vibe lounge with gaming consoles, neon lighting and shisha; popular with students, open till late."
   },
@@ -215,7 +298,11 @@
     "address": "Onxy Heights, Northern Strip, FECHS, E-11/2, Islamabad, 44000, Pakistan",
     "lat": 33.701344,
     "lng": 72.968121,
-    "features": ["rooftop", "events", "24 hours"],
+    "features": [
+      "rooftop",
+      "events",
+      "24 hours"
+    ],
     "rating": "⭐ 4.8",
     "description": "24-hour rooftop café-restaurant popular for events, celebrations and skyline views of Islamabad."
   },
@@ -225,7 +312,11 @@
     "address": "1 Agha Khan Rd, F-6 Markaz, Islamabad, Pakistan",
     "lat": 33.7305564,
     "lng": 73.079177,
-    "features": ["grill", "steaks", "dinner"],
+    "features": [
+      "grill",
+      "steaks",
+      "dinner"
+    ],
     "rating": "⭐ 4.2",
     "description": "Long-standing F-6 grill house known for tomahawk steaks, loaded fries and a lively evening crowd."
   },
@@ -235,7 +326,11 @@
     "address": "Tazeem Tower, Plot 3, New Blue Area, F-9/G-9, Islamabad, 44000, Pakistan",
     "lat": 33.6924243,
     "lng": 73.0247433,
-    "features": ["family-friendly", "modern", "all-day dining"],
+    "features": [
+      "family-friendly",
+      "modern",
+      "all-day dining"
+    ],
     "rating": "⭐ 4.0",
     "description": "Buzzy, modern all-day café-restaurant popular for breakfast, pasta and steaks."
   },
@@ -245,7 +340,11 @@
     "address": "1st Floor, Giga Mall, DHA Phase II, Islamabad, Pakistan",
     "lat": 33.5211113,
     "lng": 73.1585192,
-    "features": ["wifi", "mall", "modern"],
+    "features": [
+      "wifi",
+      "mall",
+      "modern"
+    ],
     "rating": "⭐ 3.5",
     "description": "Bright mall café inside Giga Mall with plenty of seating and good wifi; a convenient stop while shopping in DHA."
   },
@@ -255,7 +354,11 @@
     "address": "Plaza 10, 1st Floor, Civic Centre, Bahria Town, Islamabad, 46000, Pakistan",
     "lat": 33.5505646,
     "lng": 73.1232015,
-    "features": ["24 hours", "shisha", "dessert"],
+    "features": [
+      "24 hours",
+      "shisha",
+      "dessert"
+    ],
     "rating": "⭐ 4.4",
     "description": "Popular 24-hour Bahria Town spot known for its shisha lounge, casual fast food and good desserts."
   },
@@ -265,7 +368,11 @@
     "address": "Al Anayat Mall, G-11 Markaz, Islamabad, 44020, Pakistan",
     "lat": 33.6679972,
     "lng": 72.9971535,
-    "features": ["tea house", "paratha", "casual"],
+    "features": [
+      "tea house",
+      "paratha",
+      "casual"
+    ],
     "rating": "⭐ 4.4",
     "description": "Casual G-11 tea house famous for karak doodh pati and stuffed parathas."
   },
@@ -275,7 +382,11 @@
     "address": "No. 4, Kohsar Market, Street 10, F-6/3, Islamabad, Pakistan",
     "lat": 33.7355367,
     "lng": 73.0783478,
-    "features": ["fine dining", "italian", "garden seating"],
+    "features": [
+      "fine dining",
+      "italian",
+      "garden seating"
+    ],
     "rating": "⭐ 4.1",
     "description": "Vintage Italian-themed courtyard restaurant known for wood-fired pizza and a relaxed high-tea spread."
   },
@@ -285,8 +396,128 @@
     "address": "Gol Market, Street 3, F-7/3, Islamabad, Pakistan",
     "lat": 33.7261521,
     "lng": 73.0572509,
-    "features": ["dessert", "ice cream", "iconic"],
+    "features": [
+      "dessert",
+      "ice cream",
+      "iconic"
+    ],
     "rating": "⭐ 4.3",
     "description": "Islamabad institution for nearly three decades — retro décor and beloved ice creams, gelatos and hot chocolate."
+  },
+  {
+    "id": 33,
+    "name": "Cinnabon Centaurus Mall",
+    "address": "The Centaurus Mall, Jinnah Avenue, F-8/4, Islamabad, Pakistan",
+    "lat": 33.707829,
+    "lng": 73.049954,
+    "features": [
+      "dessert",
+      "mall",
+      "coffee-chain"
+    ],
+    "rating": "⭐ 4.1",
+    "description": "Mall café known for cinnamon rolls, matcha drinks, and a wide range of coffee and shake options."
+  },
+  {
+    "id": 34,
+    "name": "Rina's Kitchenette",
+    "address": "10 Street 25A, F-6/2, Islamabad, Pakistan",
+    "lat": 33.7310634,
+    "lng": 73.0694702,
+    "features": [
+      "rooftop",
+      "cozy",
+      "brunch"
+    ],
+    "rating": "⭐ 4.2",
+    "description": "Hyped F-6/2 café-restaurant with a bright, cozy interior and rooftop seating with Margalla Hills views."
+  },
+  {
+    "id": 35,
+    "name": "The Monal Islamabad",
+    "address": "Capital Enclave, Main Islamabad Expressway, near PWD Interchange, Islamabad, 44000, Pakistan",
+    "lat": 33.5707964,
+    "lng": 73.1593853,
+    "features": [
+      "fine dining",
+      "panoramic view",
+      "outdoor seating"
+    ],
+    "rating": "⭐ 4.4",
+    "description": "Islamabad landmark restaurant on the Margalla Hills with panoramic city views; extensive desi and continental menu."
+  },
+  {
+    "id": 36,
+    "name": "Cafe Soul",
+    "address": "88-B Street No. 18, F-7/2, Islamabad, 44000, Pakistan",
+    "lat": 33.7216233,
+    "lng": 73.0476383,
+    "features": [
+      "breakfast",
+      "cozy",
+      "guest house"
+    ],
+    "rating": "⭐ 4.7",
+    "description": "Charming F-7/2 café attached to a guesthouse, known for its breakfast spread and club sandwich."
+  },
+  {
+    "id": 37,
+    "name": "Chai Mehfil",
+    "address": "United Bakery Building, Plot no. 11, Super Market, Block B, School Rd, F-6 Markaz, Islamabad, 44000, Pakistan",
+    "lat": 33.7294827,
+    "lng": 73.0751956,
+    "features": [
+      "tea house",
+      "live music",
+      "rooftop"
+    ],
+    "rating": "⭐ 4.1",
+    "hours": "12:00 PM – 2:00 AM",
+    "description": "Lively rooftop tea house known for live qawali nights, karak chai and a big family-friendly seating area."
+  },
+  {
+    "id": 38,
+    "name": "Butlers Chocolate Café",
+    "address": "24 School Rd, F-6 Markaz, Islamabad, Pakistan",
+    "lat": 33.7315106,
+    "lng": 73.0789374,
+    "features": [
+      "dessert",
+      "late night",
+      "coffee-chain"
+    ],
+    "rating": "⭐ 4.3",
+    "hours": "8:00 AM – 1:00 AM",
+    "description": "Bright, modern café-chain outpost known for its complimentary chocolate with coffee and late-night hours."
+  },
+  {
+    "id": 39,
+    "name": "Coffee Cult",
+    "address": "Plaza 6B, F-7 Markaz, Islamabad, 44000, Pakistan",
+    "lat": 33.7192558,
+    "lng": 73.0552383,
+    "features": [
+      "specialty coffee",
+      "boutique",
+      "wifi"
+    ],
+    "rating": "⭐ 5.0",
+    "hours": "12:00 PM – 9:00 PM",
+    "description": "Small, newer F-7 coffee-and-lifestyle boutique praised for its Spanish latte and curated skincare/jewellery corner."
+  },
+  {
+    "id": 40,
+    "name": "Aroma Specialty Coffee",
+    "address": "Block 5B, near Post Office, F-6 Markaz, Islamabad, Pakistan",
+    "lat": 33.730612,
+    "lng": 73.0784972,
+    "features": [
+      "specialty coffee",
+      "quiet",
+      "minimalist"
+    ],
+    "rating": "⭐ 4.6",
+    "hours": "8:30 AM – 1:00 AM",
+    "description": "Calm, minimalist specialty coffee bar known for its V60 pour-overs and Madagascar vanilla latte."
   }
 ]

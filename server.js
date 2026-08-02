@@ -1,14 +1,17 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const fs = require('fs');
 const path = require('path');
 
-const { filterCafes, sortByDistance } = require('./utils/filterCafes');
+const { filterCafes, sortByDistance, sortCafes } = require('./utils/filterCafes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -20,11 +23,25 @@ function loadCafes() {
   return JSON.parse(raw);
 }
 
-// GET /api/cafes?query=xyz&feature=wifi
+// simple health check so a host (Render, uptime pingers, etc) can confirm the app is alive
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime() });
+});
+
+// the AI endpoint is the only one hitting a paid/quota-limited external API,
+// so it gets its own tighter limit — 10 requests/min per IP is plenty for a demo app
+const aiLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 10,
+  message: { error: 'Too many AI search requests, please wait a bit and try again.' },
+});
+
+// GET /api/cafes?query=xyz&feature=wifi&sort=rating
 app.get('/api/cafes', (req, res) => {
   const cafes = loadCafes();
-  const { query = '', feature = 'all' } = req.query;
-  res.json(filterCafes(cafes, { query, feature }));
+  const { query = '', feature = 'all', sort = 'default' } = req.query;
+  const filtered = filterCafes(cafes, { query, feature });
+  res.json(sortCafes(filtered, sort));
 });
 
 // GET /api/cafes/near?lat=..&lng=..
@@ -38,15 +55,26 @@ app.get('/api/cafes/near', (req, res) => {
   res.json(sorted);
 });
 
+// very small in-memory cache so repeated identical queries don't burn Gemini quota.
+// resets on server restart — fine for a demo app, would move to Redis for anything bigger.
+const aiCache = new Map();
+const AI_CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+
 // POST /api/ai-search { query: "quiet place with wifi near F-7" }
 // asks Gemini to pick matching cafe ids from the free-text query, key stays server side
-app.post('/api/ai-search', async (req, res) => {
+app.post('/api/ai-search', aiLimiter, async (req, res) => {
   const { query } = req.body;
   if (!query) {
     return res.status(400).json({ error: 'query is required' });
   }
   if (!process.env.GEMINI_API_KEY) {
     return res.status(500).json({ error: 'GEMINI_API_KEY not set on server' });
+  }
+
+  const cacheKey = query.trim().toLowerCase();
+  const cached = aiCache.get(cacheKey);
+  if (cached && Date.now() - cached.timestamp < AI_CACHE_TTL_MS) {
+    return res.json(cached.result);
   }
 
   const cafes = loadCafes();
@@ -100,11 +128,18 @@ app.post('/api/ai-search', async (req, res) => {
     // preserve the order the model gave us
     matched.sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id));
 
+    aiCache.set(cacheKey, { result: matched, timestamp: Date.now() });
+
     res.json(matched);
   } catch (err) {
     console.error('ai-search failed:', err.message);
     res.status(502).json({ error: 'AI search is unavailable right now' });
   }
+});
+
+// catch-all for anything that doesn't match an API route or a static file
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
 });
 
 app.listen(PORT, () => {
