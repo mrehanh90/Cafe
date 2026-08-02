@@ -11,20 +11,49 @@ const { filterCafes, sortByDistance, sortCafes } = require('./utils/filterCafes'
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// helmet's default CSP only allows same-origin resources, which blocks the
-// Google Maps script, the marker clustering script from unpkg, and the map
-// tiles/images Maps loads at runtime. Explicitly allow what this app needs
-// rather than turning CSP off entirely.
+// My first attempt at this only allowed maps.googleapis.com for scripts and
+// missed several things Google's Maps JS API actually needs under a strict CSP:
+// it uses eval-based dynamic loading internally, and opens an auth iframe from
+// google.com. This is Google's own documented required CSP for the Maps JS API
+// (https://developers.google.com/maps/documentation/javascript/content-security-policy),
+// with unpkg.com added for the marker clustering script.
 app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://maps.googleapis.com", "https://unpkg.com"],
-        styleSrc: ["'self'", "'unsafe-inline'"], // Maps injects inline styles for the map UI
-        imgSrc: ["'self'", "data:", "https://*.googleapis.com", "https://*.gstatic.com", "https://*.ggpht.com"],
-        connectSrc: ["'self'", "https://maps.googleapis.com", "https://*.googleapis.com"],
+        scriptSrc: [
+          "'self'",
+          "'unsafe-inline'",
+          "'unsafe-eval'", // Maps JS API requires this internally
+          "https://*.googleapis.com",
+          "https://*.gstatic.com",
+          "https://*.google.com",
+          "https://*.ggpht.com",
+          "https://*.googleusercontent.com",
+          "https://unpkg.com",
+          "blob:",
+        ],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+        imgSrc: [
+          "'self'",
+          "data:",
+          "https://*.googleapis.com",
+          "https://*.gstatic.com",
+          "https://*.google.com",
+          "https://*.googleusercontent.com",
+        ],
+        connectSrc: [
+          "'self'",
+          "https://*.googleapis.com",
+          "https://*.google.com",
+          "https://*.gstatic.com",
+          "data:",
+          "blob:",
+        ],
         fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        frameSrc: ["https://*.google.com"], // Maps opens an auth iframe from google.com
+        workerSrc: ["blob:"],
       },
     },
   })
