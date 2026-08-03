@@ -14,6 +14,7 @@ let markers = [];
 let clusterer;
 let infoWindow;
 let allCafes = [];
+let userLocationMarker; // separate from cafe markers so displayCafes() never clears it
 
 const cafeListEl = document.getElementById('cafeList');
 const searchInput = document.getElementById('searchInput');
@@ -220,6 +221,32 @@ function openInfoWindow(cafe, marker) {
     infoWindow.open(map, marker);
 }
 
+// drops (or moves, on repeat clicks) a distinct "you are here" pin — separate from
+// the cafe markers array so displayCafes()'s clear-and-redraw never touches it
+function showUserLocationMarker(lat, lng) {
+    const position = { lat, lng };
+
+    if (userLocationMarker) {
+        userLocationMarker.setPosition(position);
+        return;
+    }
+
+    userLocationMarker = new google.maps.Marker({
+        position,
+        map,
+        title: 'Your location',
+        zIndex: 999, // stay on top of cafe pins/clusters
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 9,
+            fillColor: '#4285F4',
+            fillOpacity: 1,
+            strokeColor: '#ffffff',
+            strokeWeight: 3,
+        },
+    });
+}
+
 // normal search + filter, hits the backend so filtering logic only lives in one place.
 // "favorites" is a client-only concept (stored in localStorage), so that one filters locally instead.
 async function runFilter() {
@@ -276,6 +303,7 @@ nearMeBtn.addEventListener('click', () => {
                 const res = await fetch(`/api/cafes/near?lat=${latitude}&lng=${longitude}`);
                 const sorted = await res.json();
                 displayCafes(sorted);
+                showUserLocationMarker(latitude, longitude);
                 map.setCenter({ lat: latitude, lng: longitude });
                 map.setZoom(14);
                 showStatus(`Showing cafes closest to your location, nearest first.`);
